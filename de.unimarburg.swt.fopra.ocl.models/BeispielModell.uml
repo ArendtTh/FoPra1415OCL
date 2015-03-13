@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_-spWYKhyEeSFINuu7OlY5w" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Cg98kKhzEeSFINuu7OlY5w" name="Führerschein">
+    <generalization xmi:type="uml:Generalization" xmi:id="_uE01QKiCEeSFINuu7OlY5w" general="_aUtMoKh1EeSFINuu7OlY5w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RIRkMKhzEeSFINuu7OlY5w" name="Begleitetes Fahren">
+    <generalization xmi:type="uml:Generalization" xmi:id="_utHkUKiCEeSFINuu7OlY5w" general="_aUtMoKh1EeSFINuu7OlY5w"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6jXVYKiJEeSFINuu7OlY5w" name="begleiter" type="_61OjcKhzEeSFINuu7OlY5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7wNpYKiREeSFINuu7OlY5w" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7wNpYaiREeSFINuu7OlY5w" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_61OjcKhzEeSFINuu7OlY5w" name="Person">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5Q5sIKiCEeSFINuu7OlY5w" name="vorname">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8toRsKiCEeSFINuu7OlY5w" name="nachname">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dEPzsKiDEeSFINuu7OlY5w" name="alter">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dLZOoKixEeSFINuu7OlY5w" name="strafpunkte">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_TOlWALPPEeSlrr9YDl4kKw" name="hatFahrerlaubnis">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aUtMoKh1EeSFINuu7OlY5w" name="Fahrerlaubnis" isAbstract="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vZo2oKiDEeSFINuu7OlY5w" name="ausstellungsjahr">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_h_vdU6iDEeSFINuu7OlY5w" memberEnd="_h_vdVKiDEeSFINuu7OlY5w _h_vdUKiDEeSFINuu7OlY5w">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_h_vdVKiDEeSFINuu7OlY5w" name="person" type="_61OjcKhzEeSFINuu7OlY5w" association="_h_vdU6iDEeSFINuu7OlY5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h_vdVaiDEeSFINuu7OlY5w" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h_vdVqiDEeSFINuu7OlY5w" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_h_vdUKiDEeSFINuu7OlY5w" name="fahrerlaubnis" type="_aUtMoKh1EeSFINuu7OlY5w" association="_h_vdU6iDEeSFINuu7OlY5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h_vdUaiDEeSFINuu7OlY5w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h_vdUqiDEeSFINuu7OlY5w" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_YFtTkKh3EeSFINuu7OlY5w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YGO4AKh3EeSFINuu7OlY5w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_sYse0YZLEeKyw49uR6nx3g"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

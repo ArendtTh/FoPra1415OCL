@@ -1,0 +1,12 @@
+import uml : 'http://www.eclipse.org/uml2/5.0.0/UML#/'
+import 'BeispielModell.uml'
+
+package model
+
+context Person inv istFahrer: self.hatFahrerlaubnis
+    implies (self.alter>=17)
+    implies (self.fahrerlaubnis.ausstellungsjahr<=2015)
+    implies (self.strafpunkte>=0)
+    implies (self.strafpunkte<8)
+
+endpackage

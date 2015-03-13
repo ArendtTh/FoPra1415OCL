@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+<extension point="org.eclipse.emf.refactor.smells">
+<modelsmell id="de.pum.swt.ocl.afce" modelsmell_description="This is a test smell and detects all feature call expressions." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.AllFeatureCallExpressions" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="All Single Feature Call Expressions"/>
+<modelsmell id="de.pum.swt.ocl.ainv" modelsmell_description="This is a test smell and detects all invariants in the model." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.AllInvariants" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="All Single Invariants">
+</modelsmell>
+<modelsmell id="de.pum.swt.ocl.mus" modelsmell_description="The variable 'self' is multiply used within an invariant." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MultipleUsagesOfSelf" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="Multiple Usages of Self">
+</modelsmell>
+</extension>
+</plugin>

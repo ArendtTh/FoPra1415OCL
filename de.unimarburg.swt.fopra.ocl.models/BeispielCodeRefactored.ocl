@@ -1,0 +1,26 @@
+import uml : 'http://www.eclipse.org/uml2/5.0.0/UML#/'
+import 'BeispielModell.uml'
+
+package model
+
+context Person inv istFahrer1:
+  (self.hatFahrerlaubnis and
+    self.alter>=17 and
+    self.strafpunkte>=0 and
+    self.strafpunkte<8)
+    implies (self.fahrerlaubnis.ausstellungsjahr<=2015)
+
+
+def: MindestAlter : Integer = 17
+def: PunkteMinimum : Integer = 0    
+def: PunkteMaximum : Integer = 8
+def: AktuellesJahr : Integer = 2015
+
+context Person inv istFahrer2:
+  (self.hatFahrerlaubnis and
+    self.alter>=MindestAlter and
+    self.strafpunkte>=PunkteMinimum and
+    self.strafpunkte<PunkteMaximum)
+    implies (self.fahrerlaubnis.ausstellungsjahr<=AktuellesJahr)
+    
+endpackage

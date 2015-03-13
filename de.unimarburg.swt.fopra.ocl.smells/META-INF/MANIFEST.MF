@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.em
+ f.ecore,org.eclipse.emf.refactor.smells,org.eclipse.ocl.examples.xtex
+ t.completeocl;bundle-version="3.4.2"
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: Smells
+Bundle-ManifestVersion: 2
+Bundle-Activator: de.unimarburg.swt.fopra.ocl.smells.Activator
+Bundle-SymbolicName: de.unimarburg.swt.fopra.ocl.smells;singleton:=tru
+ e
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

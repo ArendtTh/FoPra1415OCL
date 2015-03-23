@@ -6,5 +6,7 @@
 </modelsmell>
 <modelsmell id="de.pum.swt.ocl.mus" modelsmell_description="The variable 'self' is multiply used within an invariant." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MultipleUsagesOfSelf" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="Multiple Usages of Self">
 </modelsmell>
+<modelsmell id="de.pum.swt.ocl.ic" modelsmell_description="The operation 'implies' is used more than once in an invariant." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.ImpliesChain" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="Implies Chain"/>
+<modelsmell id="de.pum.swt.ocl.mali" modelsmell_description="Literals are not bound to variables." modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MagicLiteral" modelsmell_metamodel="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST" modelsmell_name="Magic Literal"/>>
 </extension>
 </plugin>

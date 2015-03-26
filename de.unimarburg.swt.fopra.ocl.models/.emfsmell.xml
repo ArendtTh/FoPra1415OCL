@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<smellConfiguration>
+<modelsmell>
+<modelsmellId>de.pum.swt.ocl.ic</modelsmellId>
+</modelsmell>
+<modelsmell>
+<modelsmellId>de.pum.swt.ocl.mali</modelsmellId>
+</modelsmell>
+</smellConfiguration>

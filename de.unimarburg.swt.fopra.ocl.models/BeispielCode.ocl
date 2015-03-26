@@ -8,5 +8,9 @@ context Person inv istFahrer: self.hatFahrerlaubnis
     implies (self.fahrerlaubnis.ausstellungsjahr<=2015)
     implies (self.strafpunkte>=0)
     implies (self.strafpunkte<8)
+    
+context Person inv test: 
+	(self.alter=18 implies self.strafpunkte=6) 
+	and (self.alter=19 implies self.strafpunkte=9)
 
 endpackage

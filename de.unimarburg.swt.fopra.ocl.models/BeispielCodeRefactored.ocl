@@ -23,4 +23,9 @@ context Person inv istFahrer2:
     self.strafpunkte<PunkteMaximum)
     implies (self.fahrerlaubnis.ausstellungsjahr<=AktuellesJahr)
     
+context Person inv istFahrer3: self.alter > 18
+	
+context Person inv istFahrer4:
+	let ma : Integer = 18 in self.alter > ma
+    
 endpackage

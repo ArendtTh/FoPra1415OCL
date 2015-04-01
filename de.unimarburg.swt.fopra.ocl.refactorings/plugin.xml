@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+<extension point="org.eclipse.emf.refactor.refactorings">
+<refactoring controller="de.unimarburg.swt.fopra.ocl.refactorings.de.pum.swt.ocl.rplebv.RefactoringController" gui="de.unimarburg.swt.fopra.ocl.refactorings.de.pum.swt.ocl.rplebv.RefactoringGuiHandler" id="de.pum.swt.ocl.rplebv" menulabel="Replace Primitive Literal Expression by Variable" namespaceUri="http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST"/>
+</extension>
+</plugin>

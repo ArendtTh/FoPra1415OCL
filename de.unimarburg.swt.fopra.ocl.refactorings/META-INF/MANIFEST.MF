@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.expressions,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.change,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.ui.refactoring,
+ org.eclipse.emf.refactor.refactoring,
+ org.eclipse.emf.refactor.refactoring.runtime,
+ org.junit;bundle-version="4.8.1",
+ org.eclipse.ocl.examples.xtext.completeocl,
+ org.eclipse.ocl.examples.xtext.base
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: Refactorings
+Bundle-ManifestVersion: 2
+Bundle-Activator: de.unimarburg.swt.fopra.ocl.refactorings.Activator
+Bundle-SymbolicName: de.unimarburg.swt.fopra.ocl.refactorings;singleto
+ n:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

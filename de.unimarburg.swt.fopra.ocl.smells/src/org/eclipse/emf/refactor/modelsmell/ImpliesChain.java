@@ -27,20 +27,31 @@ public class ImpliesChain implements IModelSmellFinder {
 					for (EObject invElem : allInvariantElements) {
 						if (invElem instanceof OperationCallExp) {
 							OperationCallExp OpCExp = (OperationCallExp) invElem;
-							if ((OpCExp.getReferredOperation().getName().equals("implies"))&&(OpCExp.getSource() instanceof OperationCallExp)) {
-								OperationCallExp OpCExpSource = (OperationCallExp) OpCExp.getSource();
-								if (OpCExpSource.getReferredOperation().getName().equals("implies")) {
-									if(!usages.contains(OpCExp)){
-										usages.add(OpCExp);
+							if (OpCExp.getReferredOperation().getName().equals("implies")) {
+								if (OpCExp.getSource() instanceof OperationCallExp) {
+									OperationCallExp OpCExpSource = (OperationCallExp) OpCExp.getSource();
+									if (OpCExpSource.getReferredOperation().getName().equals("implies")) {
+										if(!usages.contains(OpCExp)){
+											usages.add(OpCExp);
+										}
+										usages.add(OpCExpSource);
 									}
-									usages.add(OpCExpSource);
-								}
-							}
+									else {
+										if (usages.size() > 1) {
+											OCLUtil.addModelSmell(results, usages, root);
+										}
+										usages.clear();
+									}
+								}								
+								else {
+									if (usages.size() > 1) {
+										OCLUtil.addModelSmell(results, usages, root);
+									}
+									usages.clear();
+								}								
+							}	
 						}
 					}					
-					if (usages.size() > 1) {
-						OCLUtil.addModelSmell(results, usages, root);
-					}
 				}
 			}
 		}

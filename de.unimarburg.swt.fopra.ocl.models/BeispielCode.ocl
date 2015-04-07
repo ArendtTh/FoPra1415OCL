@@ -13,4 +13,8 @@ context Person inv test:
 	(self.alter=18 implies self.strafpunkte=6) 
 	and (self.alter=19 implies self.strafpunkte=9)
 
+context Person inv test2: 
+	(self.alter=18 implies self.strafpunkte=6 implies self.hatFahrerlaubnis) 
+	and (self.alter=19 implies self.strafpunkte=9 implies self.hatFahrerlaubnis)
+
 endpackage

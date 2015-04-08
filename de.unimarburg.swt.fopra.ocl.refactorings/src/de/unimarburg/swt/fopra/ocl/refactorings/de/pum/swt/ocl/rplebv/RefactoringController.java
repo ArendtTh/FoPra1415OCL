@@ -8,6 +8,7 @@ package de.unimarburg.swt.fopra.ocl.refactorings.de.pum.swt.ocl.rplebv;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -23,7 +24,12 @@ import org.eclipse.ocl.examples.pivot.Constraint;
 import org.eclipse.ocl.examples.pivot.Element;
 import org.eclipse.ocl.examples.pivot.ExpressionInOCL;
 import org.eclipse.ocl.examples.pivot.LetExp;
+import org.eclipse.ocl.examples.pivot.OCLExpression;
+import org.eclipse.ocl.examples.pivot.OperationCallExp;
 import org.eclipse.ocl.examples.pivot.PivotFactory;
+import org.eclipse.ocl.examples.pivot.PrimitiveLiteralExp;
+import org.eclipse.ocl.examples.pivot.Variable;
+import org.eclipse.ocl.examples.pivot.VariableExp;
 import org.eclipse.ocl.examples.xtext.base.basecs.ConstraintCS;
 
 public final class RefactoringController implements IController{
@@ -136,7 +142,22 @@ public final class RefactoringController implements IController{
 				PivotFactory factory = PivotFactory.eINSTANCE;
 				LetExp letExp = factory.createLetExp();
 				EList<EObject> allElements = getAllElements(constraint);
+				
 				// TODO: implement model transformation
+				Variable var = factory.createVariable();
+				var.setName(variableName);
+				VariableExp varExp = factory.createVariableExp();
+				varExp.setReferredVariable(var);
+				ExpressionInOCL ExpInOCL = getExpressionInOCL(allElements);
+				OCLExpression BodyExp = ExpInOCL.getBodyExpression();
+				ExpInOCL.setBodyExpression(letExp);
+				letExp.setIn(BodyExp);
+				PrimitiveLiteralExp PLExp = getPrimitiveLiteralExp(allElements);
+				var.setInitExpression(PLExp);
+				letExp.setVariable(var);
+				OperationCallExp OpCExp = getOperationCallExp(allElements, PLExp);
+				List<OCLExpression> arguments = OpCExp.getArgument();
+				//arguments = replaceArgument(arguments, PLExp, varExp);
 			}
 			
 			private Constraint getConstraint(org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.ClassifierContextDeclCS selectedEObject) {
@@ -158,6 +179,61 @@ public final class RefactoringController implements IController{
 				}
 				return list;
 			}
+			
+			private ExpressionInOCL getExpressionInOCL(EList<EObject> list) {
+				for (EObject elem : list) {
+					if (elem instanceof ExpressionInOCL) {
+						return (ExpressionInOCL) elem;
+					}
+				}
+				return null;
+			}
+			
+			private PrimitiveLiteralExp getPrimitiveLiteralExp(EList<EObject> list) {
+				for (EObject elem : list) {
+					if (elem instanceof PrimitiveLiteralExp) {
+						return (PrimitiveLiteralExp) elem;
+					}
+				}
+				return null;
+			}
+			
+			private OperationCallExp getOperationCallExp(EList<EObject> list, PrimitiveLiteralExp PLExp) {
+				for (EObject elem : list) {
+					if (elem instanceof OperationCallExp) {
+						OperationCallExp OpCExp = (OperationCallExp) elem;
+						List<OCLExpression> arguments = OpCExp.getArgument();
+						for(OCLExpression arg : arguments){
+							if(arg instanceof PrimitiveLiteralExp){
+								PrimitiveLiteralExp PLExp2 = (PrimitiveLiteralExp) arg;
+								System.out.println(PLExp.toString());
+								System.out.println(PLExp2.toString());
+								if(PLExp2.equals(PLExp)){
+									return OpCExp;
+								}
+							}
+						}
+					}
+				}
+				return null;
+			}
+						
+			private List<OCLExpression> replaceArgument(List<OCLExpression> list, PrimitiveLiteralExp PLExp, VariableExp varExp) {
+				ListIterator<OCLExpression> li = list.listIterator();
+				int count = 0;
+				while (li.hasNext()){
+					if (li instanceof PrimitiveLiteralExp){
+						if(li.equals(PLExp)){
+							list.add(count, varExp);
+							list.remove(count + 1);
+						}
+					}
+					count++;
+					li.next();
+				}
+				return list;
+			}
+			
 		};
 	}
 
